@@ -70,11 +70,17 @@ namespace ReactWebApp.Controllers
             return clients;
         }
 
+        /*
+         Вывод вьюшки с компонентом
+         вьюшка - ~/Views/Home/Test
+         Компонент - ~/Content/js/ClientsTutorial.jsx
+         */
         public ActionResult Test()
         {
             return View();
         }
 
+        // отдача модели в виде JSON
         [OutputCache(Location = OutputCacheLocation.None)]
         public ActionResult GetThings()
         {
@@ -91,8 +97,9 @@ namespace ReactWebApp.Controllers
                     Title = "fruit",
                     Count = 100500
                 }
-        };
-            return Json(list, JsonRequestBehavior.AllowGet);
+            };
+            //обязательно с AllowGet, по умолчанию .NET не дает JSON просто так
+            return Json(list, JsonRequestBehavior.AllowGet); 
         }
 
         public ActionResult Contact()
